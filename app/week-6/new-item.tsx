@@ -37,8 +37,8 @@ const NewItem = ({ onAddItem }: { onAddItem: any }) => {
           required
           className={
             nameTouched && name == ""
-              ? "border-2 border-red-700"
-              : "border border-black"
+              ? "border-2 border-red-700 bg-white"
+              : "border border-black bg-white"
           }
           onBlur={(e) => setNameTouched(true)}
           value={name}

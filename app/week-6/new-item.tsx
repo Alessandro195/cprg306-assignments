@@ -35,18 +35,18 @@ const NewItem = ({ onAddItem }: { onAddItem: any }) => {
       <form className="space-y-1">
         <input
           required
-          className={
-            nameTouched && name == ""
-              ? "border-2 border-red-700 bg-white text-black"
-              : "border border-white bg-white text-black"
-          }
+          className={` text-white
+            ${nameTouched && name == ""
+              ? "border-2 border-red-700"
+              : "border border-white"
+          }`}
           onBlur={(e) => setNameTouched(true)}
           value={name}
           onChange={(e) => setName(e.target.value)}
         ></input>
         <input
           required
-          className="flex border border-black"
+          className="flex border border-white"
           min={1}
           max={99}
           value={quantity}
@@ -54,7 +54,7 @@ const NewItem = ({ onAddItem }: { onAddItem: any }) => {
         ></input>
         <select
           required
-          className="flex border border-black px-8 "
+          className="flex border border-white px-8 "
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
@@ -71,7 +71,7 @@ const NewItem = ({ onAddItem }: { onAddItem: any }) => {
           <option value="Other">Other</option>
         </select>
         <button
-          className="border border-black disabled:cursor-not-allowed disabled:bg-gray-50"
+          className="border border-black disabled:cursor-not-allowed border-white"
           disabled={name == ""}
           onClick={handleSubmit}
         >

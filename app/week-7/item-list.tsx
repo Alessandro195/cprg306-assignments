@@ -3,7 +3,7 @@
 import Item from "../week-7/item";
 import { useState } from "react";
 
-export default function ItemList({ items }: { items: any }) {
+export default function ItemList({ items, onItemSelect }: { items: any, onItemSelect: (item: any) => void; }) {
   const [sortBy, setSortBy] = useState("name");
   let itemsCopy = [...items];
   if (sortBy === "name") {
@@ -19,7 +19,7 @@ export default function ItemList({ items }: { items: any }) {
 
   return (
     <div>
-      <div className="flex justify-center gap-8 mt-3">
+      <div className="flex justify-center gap-8 mt-3 bg-gray-600 p-2 rounded-sm">
         <button
           className={`border-2 rounded-sm text-center p-1 ${sortBy === "name" ? "bg-gray-300" : "bg-green-400"}`}
           onClick={() => setSortBy("name")}
@@ -39,7 +39,7 @@ export default function ItemList({ items }: { items: any }) {
           Sort By Category & Name
         </button>
       </div>
-      <div>
+      <div className="bg-gray-600 p-2 mt-3 rounded-sm">
         {sortBy === "categoryList"
           ? uniqueCategories.map((uniqueCategory, index) => (
               <div key={index}>
@@ -51,6 +51,7 @@ export default function ItemList({ items }: { items: any }) {
                         name={item.name}
                         quantity={item.quantity}
                         category={item.category}
+                        onSelect={() => onItemSelect(item)}
                       />
                     </div>
                   ) : (
@@ -65,6 +66,7 @@ export default function ItemList({ items }: { items: any }) {
                   name={item.name}
                   quantity={item.quantity}
                   category={item.category}
+                  onSelect={() => onItemSelect(item)}
                 />
               </div>
             ))}
